@@ -1,6 +1,6 @@
 import React from 'react'
 import { setCookie } from 'nookies'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { RegisterFormSchema } from '../../../utils/validations'
 import { FormField } from '../../FormField'
@@ -22,12 +22,12 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 }) => {
 	const dispatch = useAppDispatch()
 	const [errorMessage, setErrorMessage] = React.useState('')
-	const form = useForm({
+	const form = useForm<CreateUserDto>({
 		mode: 'onChange',
 		resolver: yupResolver(RegisterFormSchema)
 	})
 
-	const onSubmit = async (dto: CreateUserDto) => {
+	const onSubmit: SubmitHandler<CreateUserDto> = async dto => {
 		try {
 			const data = await Api().user.register(dto)
 			setCookie(null, 'authToken', data.token, {
@@ -38,15 +38,11 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 			dispatch(setUserData(data))
 		} catch (err) {
 			console.warn('Register error', err)
-			// Если ошибка - это строка, то просто устанавливаем ее как сообщение об ошибке
 			if (typeof err === 'string') {
 				setErrorMessage(err)
 			} else if (err instanceof Error) {
-				// Если ошибка является объектом ошибки, то извлекаем ее сообщение
 				setErrorMessage(err.message)
 			} else {
-				// Если ошибка не является объектом ошибки и не является строкой,
-				// то устанавливаем стандартное сообщение об ошибке
 				setErrorMessage('Произошла неизвестная ошибка.')
 			}
 		}
@@ -55,15 +51,15 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 	return (
 		<div>
 			<FormProvider {...form}>
-				<FormField name='fullName' label='Имя и Фамилия' />
-				<FormField name='email' label='Почта' />
-				<FormField name='password' label='Пароль' />
-				{errorMessage && (
-					<Alert severity='error' className='mb-20'>
-						{errorMessage}
-					</Alert>
-				)}
 				<form onSubmit={form.handleSubmit(onSubmit)}>
+					<FormField name='fullName' label='Имя и Фамилия' />
+					<FormField name='email' label='Почта' />
+					<FormField name='password' label='Пароль' />
+					{errorMessage && (
+						<Alert severity='error' className='mb-20'>
+							{errorMessage}
+						</Alert>
+					)}
 					<div className='d-flex align-center justify-between'>
 						<Button
 							disabled={!form.formState.isValid || form.formState.isSubmitting}
