@@ -40,6 +40,12 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 			console.warn('Register error', err)
 			if (err.response) {
 				setErrorMessage(err.response.data.message)
+			} else if (err instanceof Error) {
+				// If err is not a standard Error object, wrap it in a new Error
+				setErrorMessage(new Error(err).message)
+			} else {
+				// If err is not an object or does not have a message property, set a default error message
+				setErrorMessage('An unknown error occurred.')
 			}
 		}
 	}
