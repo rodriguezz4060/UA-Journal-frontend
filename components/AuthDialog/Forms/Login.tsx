@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginFormSchema } from '../../../utils/validations'
 import { FormField } from '../../FormField'
@@ -18,12 +18,12 @@ interface LoginFormProps {
 export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
 	const dispatch = useAppDispatch()
 	const [errorMessage, setErrorMessage] = React.useState('')
-	const form = useForm({
+	const form = useForm<LoginDto>({
 		mode: 'onChange',
 		resolver: yupResolver(LoginFormSchema)
 	})
 
-	const onSubmit = async (dto: LoginDto) => {
+	const onSubmit: SubmitHandler<LoginDto> = async dto => {
 		try {
 			const data = await Api().user.login(dto)
 			setCookie(null, 'rtoken', data.token, {
@@ -34,15 +34,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
 			dispatch(setUserData(data))
 		} catch (err) {
 			console.warn('Login error', err)
-			// Если ошибка - это строка, то просто устанавливаем ее как сообщение об ошибке
 			if (typeof err === 'string') {
 				setErrorMessage(err)
 			} else if (err instanceof Error) {
-				// Если ошибка является объектом ошибки, то извлекаем ее сообщение
 				setErrorMessage(err.message)
 			} else {
-				// Если ошибка не является объектом ошибки и не является строкой,
-				// то устанавливаем стандартное сообщение об ошибке
 				setErrorMessage('Произошла неизвестная ошибка.')
 			}
 		}
