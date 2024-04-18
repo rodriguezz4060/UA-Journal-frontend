@@ -1,0 +1,57 @@
+.titleField {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+
+  &:before,
+  &:after {
+    display: none !important;
+  }
+
+  input {
+    font-size: 34px !important;
+    font-weight: 500 !important;
+    --color-placeholder: #d1d1d1 !important;
+    line-height: 1.3em !important;
+  }
+}
+
+.editor {
+  font-size: 18px;
+  flex: 1;
+}
+
+.container {
+  padding-top: 20px !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 83vh; /* Change this line */
+}
+
+.buttonContainer {
+  padding-bottom: 40px;
+}
+
+.writing__footer {
+  order: 2;
+  top: auto;
+  bottom: 0;
+  border-bottom: 0;
+  height: var(--footer-height);
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fff;
+  padding-right: var(--scrollbar-size);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 10px;
+}
+
+.codex_editor__bottom {
+  height: 320px;
+}

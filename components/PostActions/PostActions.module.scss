@@ -1,0 +1,138 @@
+.contentFooter {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-top: 14px;
+	font-size: 15px;
+}
+
+.contentFooter__short {
+	margin-top: 12px;
+	padding-bottom: 16px;
+}
+
+.islandA {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.buttonSvg {
+	padding: 5px !important;
+}
+
+.contentFooter__item:not(:last-child) {
+	margin-right: 20px;
+}
+
+.comments_counter {
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	vertical-align: top;
+	color: #595959;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	&:hover {
+		.buttonSvg {
+			background-color: rgba(0, 102, 255, 0.12) !important;
+			border-radius: 100%;
+			z-index: 1;
+			--text-color: #68a2f3;
+			color: var(--text-color);
+		}
+	}
+}
+
+.likeButton {
+	color: #595959;
+}
+
+.comments_counter:hover {
+	--text-color: #68a2f3;
+	color: var(--text-color);
+}
+
+.comments_counter__count__value {
+	line-height: 22px;
+	font-size: 15px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.comments_counter__count {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.comments_counter__num .comments_counter__count__value,
+.comments_counter__mall .comments_counter__count__value {
+	margin-left: 1px;
+}
+
+.contentFooter__item__right {
+	margin-left: auto;
+	-ms-flex-order: 2;
+	order: 2;
+}
+
+.ratingUp {
+	padding: 5px !important;
+
+	&:hover {
+		background-color: rgba(0, 255, 0, 0.12) !important;
+		border-radius: 100%;
+		z-index: 1;
+	}
+}
+
+.ratingUp_counter:hover {
+	--text-color: #4cce40;
+	color: var(--text-color);
+}
+
+.ratingDown {
+	padding: 5px !important;
+
+	&:hover {
+		background-color: rgba(255, 0, 0, 0.12) !important;
+		border-radius: 100%;
+		z-index: 1;
+	}
+}
+
+.ratingDown_counter:hover {
+	--text-color: #ce4040;
+	color: var(--text-color);
+}
+
+.userRatedUp {
+	--text-color: #4cce40 !important;
+	color: var(--text-color) !important;
+}
+
+.userRatedDown {
+	--text-color: #ce4040 !important;
+	color: var(--text-color) !important;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal_content {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+}

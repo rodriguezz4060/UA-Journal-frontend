@@ -1,0 +1,223 @@
+@media (min-width: 1000px) {
+	.page__contentSidebar {
+		grid-template-columns: 1fr 300px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.page__content,
+	.page__contentHeader {
+		grid-column: 1;
+	}
+}
+
+@media (min-width: 640px) {
+	.islandRound {
+		border-radius: 8px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.page__sidebar {
+		grid-column: 2;
+	}
+}
+
+.page {
+	--page-sidebar-offset-top: 0;
+	display: grid;
+	grid-gap: 32px 20px;
+}
+
+.page__content,
+.page__header {
+	min-width: 0;
+}
+
+.userSettings__content {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding-bottom: 0;
+}
+
+.island {
+	--offset-x: var(--island-offset-x, 20px);
+	padding: 15px var(--offset-x) 16px;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+.islandBg {
+	background-color: #fff;
+}
+
+.settingsHeader {
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-top: 1px;
+	color: rgba(0, 0, 0, 0.65);
+}
+.userSettings__header {
+}
+
+.settingsHeader__icon {
+}
+.icon {
+	position: relative;
+	pointer-events: none;
+	fill: currentColor;
+}
+.icon__arrow_left {
+}
+
+.userSettings__container {
+}
+
+.userProfile {
+}
+
+.formSection {
+}
+
+.formSection__label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 26px;
+}
+
+.userSettings__sidebar {
+}
+.userSettings__sidebar {
+}
+
+.userSettings__stickyContainer {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.formSection {
+	margin-top: 22px;
+}
+
+.arrowIco {
+	color: rgba(0, 0, 0, 0.65);
+}
+
+.textarea:hover .arrowIco {
+	color: black;
+	z-index: 5;
+}
+
+.island__header {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: baseline;
+	align-items: baseline;
+	margin-top: -3px;
+	margin-bottom: 6px;
+}
+
+.island__title {
+	font-size: 16px;
+	line-height: 1.5em;
+	font-weight: 500;
+}
+
+.listTabs {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.listTab__active {
+	font-weight: 500;
+	background-color: #eff5fe;
+	pointer-events: none;
+}
+
+.listTab {
+	--island-offset-x: 20px;
+	--offset-x: var(--island-offset-x, 20px);
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0 var(--offset-x);
+	margin-left: calc(var(--offset-x) * -1);
+	margin-right: calc(var(--offset-x) * -1);
+	cursor: pointer;
+}
+
+.listTab:hover {
+	background-color: rgba(239, 245, 254, 0.5);
+}
+
+.listTab__icon {
+	width: 36px;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.65);
+	padding-bottom: 3px;
+}
+
+.listTab__active .listTab__icon {
+	color: #000;
+}
+
+.listTab__label {
+	display: -ms-flexbox;
+	display: flex;
+	padding: 12px 0 13px;
+	-ms-flex: 1;
+	flex: 1;
+	min-width: 0;
+}
+
+.listTtab__labelText span {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.settingsFooter {
+	margin-top: 8px;
+	margin-left: -20px;
+	margin-right: -20px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.scrollFooter {
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 4;
+	bottom: 0;
+	padding: 20px;
+	border-top: 1px solid transparent;
+}
+
+.islandBg {
+	background-color: #fff;
+}
+
+.button__label {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 var(--offset);
+	margin: 0 auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

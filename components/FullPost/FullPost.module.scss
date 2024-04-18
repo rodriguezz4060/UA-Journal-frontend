@@ -1,0 +1,351 @@
+.paper {
+	margin-top: -30px;
+	padding: 20px 0;
+
+	p {
+		margin-bottom: 15px;
+		font-size: 17px;
+	}
+}
+
+.container {
+	max-width: 1000px;
+}
+
+.figure {
+	margin-bottom: 24px !important;
+}
+
+.image,
+.small_image {
+	--offset: 8px;
+	max-width: 640px !important;
+	object-fit: contain;
+	--background-color: rgba(0, 0, 0, 0.08);
+	background-color: var(--background-color);
+	margin: 0 auto !important;
+}
+
+.small_image {
+	img,
+	video {
+		max-height: 480px;
+		width: unset;
+		display: flex;
+		-ms-flex-align: center;
+		align-items: center;
+		--offset-y: var(--offset, 0);
+		padding: var(--offset-y) 0;
+		margin: 0 auto !important;
+	}
+}
+
+.image {
+	img,
+	video {
+		max-width: 100%;
+		height: auto;
+		max-height: 480px;
+		display: flex;
+		align-items: center;
+		--offset-y: var(--offset, 0);
+		padding: var(--offset-y) 0;
+		margin: 0 auto !important;
+	}
+}
+
+.stretched_image {
+	// Стиль для картинок шириной больше 1000px
+	img,
+	video {
+		width: 100%;
+	}
+}
+
+.islandA {
+	margin: 0 auto !important;
+}
+
+.islandB {
+	max-width: 640px !important;
+	margin: 0 auto !important;
+	--offset: 8px;
+}
+
+.islandC {
+	max-width: 640px !important;
+	margin: 0 auto !important;
+	padding-top: 15px;
+	padding-bottom: 13px;
+}
+
+.images {
+	--background-color: rgba(0, 0, 0, 0.08);
+	--offset-y: var(--offset, 0);
+	background-color: var(--background-color);
+	padding: var(--offset-y) 0;
+	-ms-flex-align: center;
+	align-items: center;
+	img {
+		object-fit: contain;
+		display: flex;
+		align-items: center;
+		--background-color: rgba(0, 0, 0, 0.08);
+		background-color: var(--background-color);
+		margin: 0 auto !important;
+	}
+}
+
+.title,
+.PostActions,
+.paragraph,
+.quote__content,
+.block_code,
+.block_incut,
+.list,
+.videoContent {
+	max-width: 640px !important;
+	width: 100% !important;
+	margin: 0 auto !important;
+}
+
+.title {
+	margin-bottom: 20px !important;
+	font-size: 22px !important;
+	font-weight: 500 !important;
+	line-height: 30px !important;
+	word-wrap: break-word !important;
+	margin-bottom: 12px !important;
+}
+
+.text {
+	a {
+		color: #3766a9;
+		border-bottom: 1px solid #bed0ea;
+		cursor: pointer;
+	}
+}
+
+.quote__content {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 24px auto;
+	-webkit-column-gap: 10px;
+	-moz-column-gap: 10px;
+	column-gap: 10px;
+	row-gap: 8px;
+	max-width: 540px;
+}
+
+.block_quote {
+	display: flex;
+	flex-direction: column;
+
+	svg {
+		color: #1693e5;
+		width: 23px;
+		height: 23px;
+		position: relative;
+		pointer-events: none;
+		fill: currentColor;
+		transform: scale(1.8);
+	}
+}
+
+.quote_text {
+	font-size: 22px;
+	line-height: 32px;
+}
+
+.quote_author {
+	grid-column-start: 2;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	font-size: 15px;
+	line-height: 22px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+.block_incut {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding: 40px 0;
+	background-color: #f5fcff;
+}
+
+.content_incut {
+	position: relative;
+	width: 100%;
+	max-width: 450px;
+	margin: auto;
+
+	p {
+		font-size: 22px;
+		font-weight: 500;
+		line-height: 32px;
+	}
+}
+
+.block_code {
+	white-space: pre;
+	overflow-x: auto;
+	word-wrap: normal;
+	border: 1px solid #bebebe;
+	background: #fbfbfb;
+	padding: 20px;
+	font-size: 13px;
+	line-height: 1.7em;
+	font-family: Menlo, Consolas, 'Andale Mono WT', 'Andale Mono',
+		'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
+		'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco,
+		'Courier New', Courier, monospace;
+}
+
+.list {
+	font-size: 17px;
+	line-height: 26px;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	ul {
+		margin: 12px 0;
+		list-style: disc;
+		list-style-position: outside;
+	}
+
+	ui li {
+		margin: 10px 0 10px 2em;
+		word-wrap: break-word;
+	}
+}
+
+.subsiteCardEntry {
+	width: 100%;
+	margin-top: 16px;
+	margin-bottom: 10px;
+}
+
+.subsiteard {
+	--avatar-size: 40px;
+	font-size: 16px;
+	line-height: 1.5em;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.subsiteCard__main {
+	display: grid;
+	-ms-flex-align: center;
+	align-items: center;
+	grid-template-columns: var(--avatar-size) 1fr;
+	grid-template-rows: 1fr auto;
+	grid-gap: 0 12px;
+	-ms-flex: 1;
+	flex: 1;
+	min-height: 36px;
+}
+
+.subsiteCard__avatar {
+	grid-row: span 2;
+	width: var(--avatar-size);
+	padding-bottom: 100%;
+	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	border-radius: 50%;
+}
+
+.subsiteCard__authorInfo {
+	overflow: hidden;
+}
+
+.subsiteCardTitle {
+	--items-gap: 4px;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	min-width: 0;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+		color: #000;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+.subsiteCardTitle__item {
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+}
+
+.subsiteCardTitle__item__name {
+	font-size: 17px;
+	line-height: 26px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-ms-flex-negative: 1;
+	flex-shrink: 1;
+}
+
+.subsiteCardTitle__item:not(:first-child) {
+	margin-left: var(--items-gap);
+}
+
+.subsiteCardTitle__item__karma {
+	--items-gap: 8px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 500;
+}
+
+.numberChange__positive {
+	color: #2ea83a;
+}
+
+.numberChange__negative {
+	color: #e52e3a;
+}
+
+.subsiteCard__description {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 15px;
+	line-height: 22px;
+
+	a {
+		color: #3766a9;
+		border-bottom: 1px solid #bed0ea;
+		cursor: pointer;
+	}
+}
+
+.subsiteCard__actions {
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-left: 18px;
+}
+
+.subsiteCard__messenger {
+	margin-right: 16px !important;
+}

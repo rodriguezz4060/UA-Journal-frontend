@@ -1,0 +1,100 @@
+.userInfoContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.userInfoControl {
+	border-radius: 8px !important;
+}
+
+.userInfoControl {
+	margin-left: auto;
+}
+
+.userInfo {
+	display: flex;
+	align-items: center;
+
+	b {
+		font-weight: 500;
+		font-size: 15px;
+		margin-left: 30px;
+	}
+
+	span {
+		font-size: 15px;
+		opacity: 0.8;
+		margin-left: 10px;
+	}
+}
+
+.userAvatar {
+	--size: 22px !important;
+	width: var(--size) !important;
+	height: var(--size) !important;
+	border-radius: 6px !important;
+	margin-right: 8px !important;
+	-ms-flex-negative: 0 !important;
+	flex-shrink: 0 !important;
+	overflow: hidden !important;
+	background-size: 100% auto !important;
+	background-repeat: no-repeat !important;
+	image-rendering: -webkit-optimize-contrast !important;
+	position: absolute !important;
+}
+
+.userAvatar::after {
+	content: '';
+	border-radius: inherit;
+	-webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.userAvatar img {
+	--size: 22px;
+	display: block;
+	width: var(--size);
+	height: var(--size);
+}
+
+.itemControls {
+	display: flex;
+}
+
+.profile_button {
+	min-width: none !important;
+	cursor: pointer;
+	color: #595959 !important;
+}
+
+.button_noBackground {
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+}
+
+.profile_button {
+	min-width: 0px !important;
+	overflow: auto;
+	padding: 0px 0px !important;
+
+	&:hover {
+		background-color: transparent !important;
+
+		color: #000 !important;
+	}
+	&:active {
+		box-shadow: none !important;
+	}
+}
+
+.profileLink {
+	color: #000 !important;
+	&:hover {
+		border-bottom: none;
+	}
+}

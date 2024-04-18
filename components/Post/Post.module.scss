@@ -1,0 +1,131 @@
+.contentImage {
+	--background-color: rgba(0, 0, 0, 0.08);
+	--offset-y: var(--offset, 0);
+	background-color: var(--background-color);
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding: var(--offset-y) 0;
+
+	@media (min-width: 819px) {
+		.contentImage {
+			--offset: 0px;
+		}
+	}
+
+	@media (min-width: 260px) {
+		.contentImage {
+			--offset: 8px;
+		}
+	}
+}
+
+.menuForm {
+	border-radius: 8px !important;
+
+	ul {
+		padding-top: 2px;
+		padding-bottom: 4px;
+	}
+}
+
+.menu__item {
+	padding: 2px 3px;
+
+	li:hover {
+		border-radius: 8px !important;
+	}
+
+	svg {
+		margin-right: 12px;
+		font-size: 1.05rem;
+	}
+}
+
+.title {
+	font-weight: 500 !important;
+	font-size: 22px !important;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.paper {
+	border-radius: 8px !important;
+	margin-bottom: 30px;
+}
+
+.content {
+	// margin-top: 10px !important;
+	margin-bottom: 15px !important;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	a {
+		color: #3766a9;
+		border-bottom: 1px solid #bed0ea;
+		cursor: pointer;
+	}
+
+	p {
+		font-size: 15px;
+		word-wrap: break-word;
+		line-height: 22px;
+		font-weight: 400;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.userInfoContent {
+	padding-left: 20px;
+	padding-right: 20px;
+	flex-wrap: nowrap;
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+
+.imagePost {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	object-fit: contain;
+
+	video {
+		max-width: 100%;
+		height: auto;
+		max-height: 480px;
+		display: flex;
+		align-items: center;
+		--offset-y: var(--offset, 0);
+		padding: var(--offset-y) 0;
+		margin: 0 auto !important;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.postContent {
+	max-width: 860px;
+}
+
+.block_incut {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding: 40px 0;
+	background-color: #f5fcff;
+}
+
+.content_incut {
+	position: relative;
+	width: 100%;
+	max-width: 450px;
+	margin: auto;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 32px;
+}
+
+.figure {
+	margin-bottom: 10px !important;
+}
