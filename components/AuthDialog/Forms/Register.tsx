@@ -38,14 +38,16 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 			dispatch(setUserData(data))
 		} catch (err) {
 			console.warn('Register error', err)
-			if (err.response) {
-				setErrorMessage(err.response.data.message)
+			// Если ошибка - это строка, то просто устанавливаем ее как сообщение об ошибке
+			if (typeof err === 'string') {
+				setErrorMessage(err)
 			} else if (err instanceof Error) {
-				// If err is not a standard Error object, wrap it in a new Error
-				setErrorMessage(new Error(err).message)
+				// Если ошибка является объектом ошибки, то извлекаем ее сообщение
+				setErrorMessage(err.message)
 			} else {
-				// If err is not an object or does not have a message property, set a default error message
-				setErrorMessage('An unknown error occurred.')
+				// Если ошибка не является объектом ошибки и не является строкой,
+				// то устанавливаем стандартное сообщение об ошибке
+				setErrorMessage('Произошла неизвестная ошибка.')
 			}
 		}
 	}
@@ -65,7 +67,6 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 					<div className='d-flex align-center justify-between'>
 						<Button
 							disabled={!form.formState.isValid || form.formState.isSubmitting}
-							onClick={onOpenRegister}
 							type='submit'
 							color='primary'
 							variant='contained'
