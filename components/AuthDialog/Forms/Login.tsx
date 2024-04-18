@@ -33,9 +33,17 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
 			setErrorMessage('')
 			dispatch(setUserData(data))
 		} catch (err) {
-			console.warn('Register error', err)
-			if (err.response) {
-				setErrorMessage(err.response.data.message)
+			console.warn('Login error', err)
+			// Если ошибка - это строка, то просто устанавливаем ее как сообщение об ошибке
+			if (typeof err === 'string') {
+				setErrorMessage(err)
+			} else if (err instanceof Error) {
+				// Если ошибка является объектом ошибки, то извлекаем ее сообщение
+				setErrorMessage(err.message)
+			} else {
+				// Если ошибка не является объектом ошибки и не является строкой,
+				// то устанавливаем стандартное сообщение об ошибке
+				setErrorMessage('Произошла неизвестная ошибка.')
 			}
 		}
 	}
