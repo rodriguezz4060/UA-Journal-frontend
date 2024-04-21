@@ -16,7 +16,7 @@ interface EditorProps {
 	initialBlocks?: OutputData['blocks']
 }
 
-const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks }) => {
+const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks = [] }) => {
 	const editorRef = useRef<EditorJS | null>(null)
 
 	React.useEffect(() => {
