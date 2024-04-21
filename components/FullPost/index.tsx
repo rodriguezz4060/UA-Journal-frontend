@@ -35,6 +35,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 	rating,
 	createdAt,
 	onRemove,
+	onRepost,
 	followers
 }) => {
 	const userData = useAppSelector(selectUserData)
@@ -102,6 +103,12 @@ export const FullPost: NextPage<FullPostProps> = ({
 
 	const handleMouseLeave = () => {
 		setIsHovered(false)
+	}
+
+	const handleRepost = () => {
+		// Здесь должна быть логика для репоста поста
+		// Например, отправка запроса на сервер
+		console.log(`Репост поста с id ${id}`)
 	}
 
 	return (
@@ -246,7 +253,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 							})}
 						</div>
 						<div className={styles.PostActions}>
-							<PostActions id={id} rating={rating} />
+							<PostActions id={id} rating={rating} onRepost={handleRepost} />
 						</div>
 						<div className={styles.subsiteCardEntry}>
 							<div className={styles.islandB}>
@@ -294,12 +301,12 @@ export const FullPost: NextPage<FullPostProps> = ({
 														__html: user.description
 															.replace(
 																/(https?:\/\/[^\s]+)/g,
-																(match, url) =>
+																(match: any, url: any) =>
 																	`<a href="${url}" target="_blank">${url}</a>`
 															)
 															.replace(
 																/(^|\s)([a-zA-Z0-9]+\.([a-zA-Z]{2,}\/[^\s]+))/g,
-																(match, space, url) =>
+																(match: any, space: any, url: any) =>
 																	`${space}<a href="https://${url}" target="_blank">${url}</a>`
 															)
 													}}
