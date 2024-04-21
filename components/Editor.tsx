@@ -1,15 +1,15 @@
 import React, { useRef } from 'react'
 import EditorJS, { OutputData } from '@editorjs/editorjs'
-import Quote from '@editorjs/quote'
-import List from '@editorjs/list'
 import IncutTool from './EditorTools/incut'
-import ImageTool from '@editorjs/image'
-import VideoTool from '@medistream/editorjs-video'
 import { IconStar } from '@codexteam/icons'
 import ShowOnHomepagePlugin from './EditorTools/tunes'
 
 const Paragraph = require('@editorjs/paragraph')
 const CodeTool = require('@editorjs/code')
+const Quote = require('@editorjs/quote')
+const List = require('@editorjs/list')
+const ImageTool = require('@editorjs/image')
+const VideoTool = require('@editorjs/editorjs-video')
 
 interface EditorProps {
 	onChange: (blocks: OutputData['blocks']) => void
