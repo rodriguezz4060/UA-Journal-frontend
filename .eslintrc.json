@@ -1,3 +1,3 @@
 {
-	"extends": "next/core-we\b-vitals"
+	"extends": ["plugin:nextjs-core-web-vitals/recommended"]
 }
