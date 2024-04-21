@@ -58,7 +58,7 @@ const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks = [] }) => {
 						tunes: ['anyTuneName'],
 						config: {
 							uploader: {
-								uploadByFile: async file => {
+								uploadByFile: async (file: File) => {
 									// Отправка файла на сервер
 									const formData = new FormData()
 									formData.append('file', file)
@@ -110,7 +110,7 @@ const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks = [] }) => {
 						tunes: ['anyTuneName'],
 						config: {
 							uploader: {
-								uploadByFile: async file => {
+								uploadByFile: async (file: File) => {
 									// Отправка файла на сервер
 									const formData = new FormData()
 									formData.append('file', file)
