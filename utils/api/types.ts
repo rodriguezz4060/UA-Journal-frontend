@@ -1,5 +1,17 @@
 import { OutputData } from '@editorjs/editorjs'
 
+export type FullPostProps = {
+	title: string
+	blocks: any[]
+	user: ResponseUser[]
+	userId: string
+	id: string
+	rating: number
+	createdAt: string
+	onRemove: () => void
+	followers: FollowItem[]
+}
+
 export type LoginDto = {
 	email: string
 	password: string
