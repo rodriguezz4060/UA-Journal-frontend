@@ -105,7 +105,9 @@ export const HeaderUser: React.FC<HeaderUserProps> = ({
 	const router = useRouter()
 	const [anchorEl, setAnchorEl] = React.useState(null)
 
-	const handleClick = event => {
+	const handleClick = (event: {
+		currentTarget: React.SetStateAction<null>
+	}) => {
 		setAnchorEl(event.currentTarget)
 	}
 

@@ -11,7 +11,7 @@ export type CreateUserDto = {
 
 export type ResponseUser = {
 	id: number
-	avatarUrl?: null | string
+	avatarUrl: undefined | string
 	headerCoverUrl?: null | string
 	headerCoverPosition?: null | string
 	description: null | string
