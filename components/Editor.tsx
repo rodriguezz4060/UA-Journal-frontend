@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import EditorJS, { OutputData } from '@editorjs/editorjs'
 import Quote from '@editorjs/quote'
 import List from '@editorjs/list'
@@ -19,8 +19,9 @@ interface EditorProps {
 const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks = [] }) => {
 	const editorRef = useRef<EditorJS | null>(null)
 
-	React.useEffect(() => {
-		if (!editorRef.current?.isReady) {
+	const setEditorRef = useCallback((element: HTMLDivElement) => {
+		if (element) {
+			// Инициализация EditorJS
 			const editor = new EditorJS({
 				holder: 'editor',
 				minHeight: 0,
@@ -220,7 +221,7 @@ const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks = [] }) => {
 		}
 	}, [])
 
-	return <div id='editor' ref={editorRef} />
+	return <div id='editor' ref={setEditorRef} />
 }
 
 export default Editor
