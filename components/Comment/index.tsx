@@ -23,6 +23,7 @@ interface CommentPostProps {
 	createdAt: string
 	currentUserId: number
 	onRemove: (id: number) => void
+	confirmRemove?: (message: string) => boolean
 }
 
 export const Comment: React.FC<CommentPostProps> = ({
@@ -31,11 +32,12 @@ export const Comment: React.FC<CommentPostProps> = ({
 	text,
 	createdAt,
 	currentUserId,
-	onRemove
+	onRemove,
+	confirmRemove = window.confirm
 }) => {
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
-	const handleClick = event => {
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -44,7 +46,7 @@ export const Comment: React.FC<CommentPostProps> = ({
 	}
 
 	const handleClickRemove = async () => {
-		if (window.confirm('Удалить комментарий?')) {
+		if (confirmRemove('Удалить комментарий?')) {
 			try {
 				await Api().comment.remove(id)
 				onRemove(id)
