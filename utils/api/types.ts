@@ -28,7 +28,7 @@ export type ResponseUser = {
 export type PostItem = {
 	title: string
 	body: OutputData['blocks']
-	description?: null | string
+	description: string
 	tags: null | string
 	id: number
 	views: number
@@ -71,16 +71,4 @@ export type FollowItem = {
 	user: ResponseUser
 	following: number[]
 	followers: number[]
-}
-
-export type FullPostProps = {
-	title: string
-	blocks: any[]
-	user: ResponseUser[]
-	userId: number
-	id: number
-	rating: number
-	createdAt: string
-	onRemove: () => void
-	followers: FollowItem[]
 }

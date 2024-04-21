@@ -4,7 +4,7 @@ import MessageIcon from '@material-ui/icons/TextsmsOutlined'
 import QuoteIcon from '@material-ui/icons/FormatQuote'
 import styles from './FullPost.module.scss'
 import buttonStyles from '../Profile/Porfile.module.scss'
-import { FullPostProps } from '.'
+// import { FullPostProps } from '.'
 import { Avatar, Paper, Typography } from '@material-ui/core'
 import FollowIcon from '@material-ui/icons/PersonAddOutlined'
 import AddIcon from '@material-ui/icons/AddOutlined'
@@ -20,6 +20,7 @@ import Link from 'next/link'
 import { FollowItem } from '../../utils/api/types'
 import { NextPage } from 'next'
 import { useUserFollowing } from '../../hooks/useFollowing'
+import { FullPostProps } from './FullPostProps'
 
 interface FullPost {
 	followers: FollowItem[]
@@ -163,7 +164,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 										<div className={styles.figure}>
 											<div className={styles.list}>
 												<ul>
-													{obj.data.items.map((item, index) => (
+													{obj.data.items.map((item: any, index: number) => (
 														<li key={index}>{item}</li>
 													))}
 												</ul>
