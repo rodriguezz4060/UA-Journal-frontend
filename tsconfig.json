@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
-		"typeRoots": ["./node_modules/@types", "./typings"],
+		"typeRoots": [
+			"./node_modules/@types",
+			"./typings",
+			"./node_modules/@editorjs"
+		],
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
