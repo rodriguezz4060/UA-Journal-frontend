@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	Button,
 	Paper,
@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 	const [authVisible, setAuthVisible] = React.useState(false)
 	const [searchValue, setSearchValue] = React.useState('')
 	const [posts, setPosts] = React.useState<PostItem[]>([])
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl, setAnchorEl] = useState<null | HTMLButtonElement>(null)
 	const [avatarUrl, setAvatarUrl] = React.useState(userData?.avatarUrl || '')
 
 	const dispatch = useDispatch()
@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 		}
 	}, [authVisible, userData])
 
-	const handleChangeInput = async e => {
+	const handleChangeInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value
 		setSearchValue(inputValue)
 		try {
@@ -79,11 +79,14 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 			} else {
 				setPosts([])
 			}
-		} catch (e) {
-			console.warn(e)
+		} catch (error) {
+			console.warn(error)
 		}
 	}
-	const handleClick = event => {
+
+	const handleClick = (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -249,11 +252,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 					</div>
 				)}
 			</div>
-			<AuthDialog
-				onClick={closeAuthDialog}
-				onClose={closeAuthDialog}
-				visible={authVisible}
-			/>
+			<AuthDialog onClose={closeAuthDialog} visible={authVisible} />
 		</Paper>
 	)
 }
