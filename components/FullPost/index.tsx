@@ -245,7 +245,9 @@ export const FullPost: NextPage<FullPostProps> = ({
 							})}
 						</div>
 						<div className={styles.PostActions}>
-							<PostActions id={id} rating={rating} />
+							<PostActions id={id} rating={rating} onRepost={function (): void {
+								throw new Error('Function not implemented.')
+							} } />
 						</div>
 						<div className={styles.subsiteCardEntry}>
 							<div className={styles.islandB}>
@@ -286,7 +288,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 												</div>
 											</div>
 
-											{user?.description && (
+											{user?. && (
 												<div
 													className={styles.subsiteCard__description}
 													dangerouslySetInnerHTML={{

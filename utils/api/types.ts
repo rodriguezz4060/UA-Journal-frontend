@@ -1,17 +1,5 @@
 import { OutputData } from '@editorjs/editorjs'
 
-export type FullPostProps = {
-	title: string
-	blocks: any[]
-	user: ResponseUser[]
-	userId: string
-	id: string
-	rating: number
-	createdAt: string
-	onRemove: () => void
-	followers: FollowItem[]
-}
-
 export type LoginDto = {
 	email: string
 	password: string
@@ -40,7 +28,7 @@ export type ResponseUser = {
 export type PostItem = {
 	title: string
 	body: OutputData['blocks']
-	description: string
+	description?: null | string
 	tags: null | string
 	id: number
 	views: number
@@ -83,4 +71,16 @@ export type FollowItem = {
 	user: ResponseUser
 	following: number[]
 	followers: number[]
+}
+
+export type FullPostProps = {
+	title: string
+	blocks: any[]
+	user: ResponseUser[]
+	userId: number
+	id: number
+	rating: number
+	createdAt: string
+	onRemove: () => void
+	followers: FollowItem[]
 }
