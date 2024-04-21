@@ -26,9 +26,9 @@ export const CommentPost: React.FC<CommentPostProps> = ({
 	post,
 	text
 }) => {
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
-	const handleClick = event => {
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -37,20 +37,19 @@ export const CommentPost: React.FC<CommentPostProps> = ({
 	}
 
 	return (
-		<Paper elevation={0} className='p-20' classes={{ root: styles.paper }}>
+		<Paper elevation={0} className={styles.paper}>
 			<Typography variant='h6' className={styles.title}>
 				<Link href='#'>{post.title}</Link>
 				<IconButton onClick={handleClick}>
 					<MoreVertIcon />
 				</IconButton>
 			</Typography>
-			<Typography className='mt-10 mb-15'>{text}</Typography>
+			<Typography className={styles.text}>{text}</Typography>
 
 			<Menu
 				id='simple-menu'
 				anchorEl={anchorEl}
 				elevation={3}
-				keepMounted
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
 			>
