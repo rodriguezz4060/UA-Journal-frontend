@@ -7,11 +7,10 @@ export default class ShowOnHomepagePlugin {
 		return true
 	}
 
-	constructor({ api, data, config, block }) {
+	constructor({ api, data, block }) {
 		this.api = api
 		this.block = block
 
-		this.settings = config
 		this.data = data || { ShowOnHomepage: false }
 		this._CSS = {
 			ShowOnHomepage: 'show-on-homepage',
