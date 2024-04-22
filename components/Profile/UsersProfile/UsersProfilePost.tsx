@@ -43,6 +43,12 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 	rating,
 	onRemove
 }) => {
+	const handleRepost = () => {
+		// Здесь должна быть логика для репоста поста
+		// Например, отправка запроса на сервер
+		console.log(`Репост поста с id ${id}`)
+	}
+
 	return (
 		<Paper elevation={0} classes={{ root: styles.paper }}>
 			<div className={styles.postContent}>
@@ -115,7 +121,7 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 					))}
 				</div>
 			)}
-			<PostActions id={id} rating={rating} onRepost={onRepost} />
+			<PostActions id={id} rating={rating} onRepost={handleRepost} />
 		</Paper>
 	)
 }
