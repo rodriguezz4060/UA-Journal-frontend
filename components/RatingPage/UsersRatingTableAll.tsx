@@ -20,7 +20,7 @@ import { useUserFollowing } from '../../hooks/useFollowing'
 interface UsersRatingTableAllPageProps {
 	userId: number
 	fullName: string
-	avatarUrl: string
+	avatarUrl?: string
 	rating: number
 	followers: FollowItem[]
 	index: number
@@ -36,7 +36,12 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 }) => {
 	const userData = useSelector(selectUserData)
 
-	const { userFollowing } = useUserFollowing(userData?.id)
+	// Проверка на null и undefined
+	if (!userData) {
+		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
+	}
+
+	const { userFollowing } = useUserFollowing(userData.id)
 
 	const dispatch = useDispatch()
 
