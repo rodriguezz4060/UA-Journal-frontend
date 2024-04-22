@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface PostProps {
 	title: string
 	id: number
-	description: string
+	description: string[]
 	incut: string[]
 	quote: string[]
 	caption: string[]
@@ -87,10 +87,11 @@ export const Post: React.FC<PostProps> = ({
 					<div
 						className={`${stylesMedia.imagePost} ${stylesMedia.contentImage}`}
 					>
-						{images.map((image, index) => {
+						{images.map((image: any, index) => {
 							const obj = {
 								type: 'image',
 								data: {
+									caption: caption,
 									file: {
 										url: image.url,
 										width: image.width,
@@ -132,8 +133,8 @@ export const Post: React.FC<PostProps> = ({
 				{video.length > 0 && (
 					<div className={styles.figure}>
 						<div className={styles.imagePost}>
-							<video key={index} controls>
-								<source src={video} type='video/mp4' />
+							<video controls>
+								<source src={video[0]} type='video/mp4' />
 							</video>
 						</div>
 					</div>
@@ -167,18 +168,12 @@ export const Post: React.FC<PostProps> = ({
 				)}
 				{description && (
 					<div className={styles.content}>
-						{description.map((paragraph, index) => (
+						{description.map((paragraph: any, index: any) => (
 							<p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
 						))}
 					</div>
 				)}
-				<PostActions
-					id={id}
-					rating={rating}
-					user={user.id}
-					postUrl={id}
-					onRepost={handleRepost}
-				/>
+				<PostActions id={id} rating={rating} onRepost={handleRepost} />
 			</Paper>
 		</div>
 	)
