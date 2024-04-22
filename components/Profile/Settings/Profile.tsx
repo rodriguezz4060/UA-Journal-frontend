@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { MouseEvent, TouchEvent, useRef } from 'react'
 import { useState } from 'react'
 import ArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import ArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
@@ -50,7 +50,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 
 	const [openSvg, setOpenSvg] = useState(false)
 	const [open, setOpen] = useState(false)
-	const anchorRef = useRef(null)
+	const anchorRef = React.useRef<HTMLDivElement>(null)
 
 	const [fullName, setFullName] = useState(userData.fullName)
 	const [description, setDescription] = useState(userData.description)
@@ -113,8 +113,8 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 		setOpen(prevOpen => !prevOpen)
 	}
 
-	const handleClose = event => {
-		if (anchorRef.current && anchorRef.current.contains(event.target)) {
+	const handleClose = (event: React.MouseEvent<Document>) => {
+		if (anchorRef.current && anchorRef.current.contains(event.target as Node)) {
 			return
 		}
 
@@ -128,7 +128,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 		}
 	}
 
-	const handleMenuItemClick = option => {
+	const handleMenuItemClick = (option: React.SetStateAction<string>) => {
 		setSelectedOption(option)
 		if (option === 'Популярное') {
 			setFeed('popular')
@@ -190,13 +190,13 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 							placeholder: 'Пара слов о себе',
 							inputProps: { maxLength: 160 },
 							endAdornment:
-								description.length <= 150 ? null : (
+								description !== null && description.length <= 150 ? null : (
 									<InputAdornment position='end'>
 										{description !== null ? 160 - description.length : null}
 									</InputAdornment>
 								)
 						}}
-						value={description}
+						value={description !== null ? description : ''}
 						onChange={handleChange}
 					/>
 				</form>
@@ -209,7 +209,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 						aria-controls={open ? 'menu-list-grow' : undefined}
 						aria-haspopup='true'
 						onClick={handleToggle}
-						fullWidth
+						style={{ width: '100%' }}
 						className={styles.textarea}
 					>
 						<TextField
