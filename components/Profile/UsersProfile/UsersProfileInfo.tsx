@@ -57,10 +57,11 @@ export const UsersProfileInfo: React.FC<UsersProfileInfoProps> = ({
 				const success = await followUser(user.id)
 				if (success) {
 					setIsFollowing(true)
-					const updatedFollowers = [
+					const updatedFollowers = {
 						...followers,
-						{ followUserId: userData?.id }
-					]
+						followUserId: userData?.id
+					}
+
 					dispatch(updateFollowers(updatedFollowers))
 				}
 			}
