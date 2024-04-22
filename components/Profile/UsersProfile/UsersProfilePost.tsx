@@ -27,6 +27,7 @@ interface UsersProfilePostProps {
 	user: ResponseUser
 	createdAt: string
 	rating: number
+	onRepost: () => void
 }
 
 export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
@@ -40,7 +41,9 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 	incut,
 	quote,
 	caption,
-	rating
+	rating,
+	onRemove,
+	onRepost
 }) => {
 	return (
 		<Paper elevation={0} classes={{ root: styles.paper }}>
@@ -52,6 +55,7 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 							id={id}
 							createdAt={createdAt}
 							user={user}
+							onRemove={onRemove}
 						/>
 					</div>
 				</div>
@@ -74,7 +78,7 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 				<div className={styles.figure}>
 					<div className={styles.imagePost}>
 						<video controls>
-							<source src={video} type='video/mp4' />
+							<source src={video[0]} type='video/mp4' />
 						</video>
 					</div>
 				</div>
@@ -113,7 +117,7 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 					))}
 				</div>
 			)}
-			<PostActions id={id} rating={rating} user={user.id} />
+			<PostActions id={id} rating={rating} onRepost={onRepost} />
 		</Paper>
 	)
 }
