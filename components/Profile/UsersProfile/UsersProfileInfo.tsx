@@ -21,7 +21,7 @@ moment.locale('ru')
 
 interface UsersProfileInfoProps {
 	user: ResponseUser
-	followers: FollowItem
+	followers: FollowItem[]
 }
 
 export const UsersProfileInfo: React.FC<UsersProfileInfoProps> = ({

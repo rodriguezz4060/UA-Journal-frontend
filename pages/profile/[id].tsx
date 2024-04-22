@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { MainLayout } from '../../layouts/MainLayout'
@@ -8,6 +8,7 @@ import { Paper, Tab, Tabs } from '@material-ui/core'
 import AvatarUploader from '../../components/Profile/AvatarUploader'
 import { UserInfo } from '../../components/Profile/UserInfo'
 import {
+	CommentItem,
 	FollowItem,
 	PostItem,
 	RatingItem,
@@ -41,6 +42,7 @@ const useStyles = makeStyles({
 
 interface ProfilePage {
 	posts: PostItem[]
+	coments: CommentItem[]
 	user: ResponseUser
 	postRating: RatingItem[]
 	followers: FollowItem[]
@@ -49,6 +51,7 @@ interface ProfilePage {
 
 const ProfilePage: NextPage<ProfilePage> = ({
 	user,
+	coments,
 	posts,
 	followers,
 	following
@@ -67,7 +70,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 	const { userComments } = useUserComments(Number(id))
 
 	const followersData = useSelector(selectFollowers)
-	const currentUserFollowers = followersData?.data
+	const currentUserFollowers = followersData
 
 	const handleRemovePost = (id: number) => {
 		const updatedList = postList.filter(post => post.id !== id)
@@ -77,9 +80,18 @@ const ProfilePage: NextPage<ProfilePage> = ({
 	const filteredComments = userComments.filter(
 		comment => comment.user.id === user.id
 	)
+
 	const sortedComments = filteredComments.sort(
-		(a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+		(a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 	)
+	// заглушка которая выдает ошибку кекв
+	const [CommentsList, setComments] = useState(coments)
+
+	const handleRemoveComment = (commentId: number) => {
+		setComments(prevComments =>
+			prevComments.filter(comment => comment.id !== commentId)
+		)
+	}
 
 	return (
 		<div>
@@ -120,8 +132,8 @@ const ProfilePage: NextPage<ProfilePage> = ({
 											<Post
 												key={obj.id}
 												id={obj.id}
+												onRemove={handleRemovePost}
 												rating={obj.rating}
-												postId={obj.id}
 												title={obj.title}
 												incut={obj.body
 													.filter(
@@ -177,12 +189,12 @@ const ProfilePage: NextPage<ProfilePage> = ({
 											<Paper className={classes.paper} elevation={0}>
 												<CommentProfile
 													id={comment.id}
+													onRemove={handleRemoveComment}
 													user={user}
 													text={comment.text}
 													createdAt={comment.createdAt}
-													currentUserId={comment.user.id}
 													post={comment.post}
-													currentUserId={userData?.id}
+													currentUserId={userData.id}
 												/>
 											</Paper>
 										))}
@@ -195,7 +207,6 @@ const ProfilePage: NextPage<ProfilePage> = ({
 									followers={followers}
 									user={userData}
 									userId={user.id}
-									setUserFollowers={setUserFollowers}
 								/>
 							</div>
 						</div>
@@ -204,12 +215,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 					<div>
 						<Paper className='pl-20 pr-20 pt-20 mb-30' elevation={0}>
 							<UsersProfileAvatar user={user} />
-							<UsersProfileInfo
-								user={user}
-								followers={followers}
-								following={following}
-								setUserFollowers={setUserFollowers}
-							/>
+							<UsersProfileInfo user={user} followers={followers} />
 							<Tabs
 								className='mt-20'
 								value={selectedTab}
@@ -231,7 +237,6 @@ const ProfilePage: NextPage<ProfilePage> = ({
 												key={obj.id}
 												id={obj.id}
 												rating={obj.rating}
-												postId={obj.id}
 												title={obj.title}
 												incut={obj.body
 													.filter(
@@ -295,7 +300,9 @@ const ProfilePage: NextPage<ProfilePage> = ({
 														createdAt={comment.createdAt}
 														currentUserId={comment.user.id}
 														post={comment.post}
-														currentUserId={userData?.id}
+														onRemove={function (id: number): void {
+															throw new Error('Function not implemented.')
+														}}
 													/>
 												</Paper>
 											))}
@@ -307,9 +314,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 								<UsersFollowInfo
 									following={following}
 									followers={followers}
-									user={userData}
 									userId={user.id}
-									setUserFollowers={setUserFollowers}
 								/>
 							</div>
 						</div>
@@ -320,17 +325,17 @@ const ProfilePage: NextPage<ProfilePage> = ({
 	)
 }
 
-export const getServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const api = Api(ctx)
 		const { id } = ctx.query
-		const userData = await api.user.getUserById(id)
+		const userData = await api.user.getUserById(Number(id))
 
 		const posts = await api.post.getAll()
-		const userComments = await api.comment.getCommentsByUserId(id)
+		const userComments = await api.comment.getCommentsByUserId(Number(id))
 
-		const following = await api.follow.getUserFollowing(id)
-		const followers = await api.follow.getUserFollowers(id)
+		const following = await api.follow.getUserFollowing(Number(id))
+		const followers = await api.follow.getUserFollowers(Number(id))
 
 		return {
 			props: {

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Avatar, Paper } from '@material-ui/core'
-import { ResponseUser } from '../../../utils/api/types'
+import { FollowItem, ResponseUser } from '../../../utils/api/types'
 import styles from '../Porfile.module.scss'
 import Link from 'next/link'
 
 interface UsersFollowInfoProps {
-	following: number[]
-	followers: number[]
-	userId: ResponseUser
+	following: FollowItem[]
+	followers: FollowItem[]
+	userId: number
 }
 
 export const UsersFollowInfo: React.FC<UsersFollowInfoProps> = ({

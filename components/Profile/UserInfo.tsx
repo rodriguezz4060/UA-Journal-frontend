@@ -14,7 +14,7 @@ import { FollowItem } from '../../utils/api/types'
 moment.locale('ru')
 
 interface UserInfoProps {
-	followers: FollowItem
+	followers: FollowItem[]
 }
 
 export const UserInfo: React.FC<UserInfoProps> = ({ followers }) => {

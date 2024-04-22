@@ -4,7 +4,7 @@ import { RootState } from '../store'
 import { HYDRATE } from 'next-redux-wrapper'
 
 export interface UserState {
-	data?: ResponseUser | null
+	data: ResponseUser | null
 }
 
 const initialState: UserState = {

@@ -10,7 +10,7 @@ import {
 import MoreIcon from '@material-ui/icons/MoreHorizOutlined'
 import styles from './CommentProfile.module.scss'
 
-import { ResponseUser } from '../../utils/api/types'
+import { PostItem, ResponseUser } from '../../utils/api/types'
 import { Api } from '../../utils/api'
 import moment from 'moment'
 import 'moment/locale/ru'
@@ -23,7 +23,7 @@ interface CommentProfileProps {
 	createdAt: string
 	currentUserId: number
 	onRemove: (id: number) => void
-	post: string
+	post: PostItem
 }
 
 export const CommentProfile: React.FC<CommentProfileProps> = ({

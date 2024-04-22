@@ -17,7 +17,7 @@ import { HeaderUser } from '../../HeaderPostUserInfo'
 interface UsersProfilePostProps {
 	title: string
 	id: number
-	description: string
+	description: string[]
 	incut: string[]
 	quote: string[]
 	caption: string[]

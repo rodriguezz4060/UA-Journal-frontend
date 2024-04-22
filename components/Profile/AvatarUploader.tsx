@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface AvatarUploaderProps {
-	headerCoverUrl?: string | null
-	headerCoverPosition?: string | null
+	headerCoverUrl: string
+	headerCoverPosition: string
 }
 
 const AvatarUploader = ({
@@ -45,6 +45,13 @@ const AvatarUploader = ({
 	// const [uploadedAvatarUrl, setUploadedAvatarUrl] = useState<string | null>(
 	// 	userData.avatarUrl
 	// )
+
+	if (!userData) {
+		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
+	}
+
+	// Теперь можно использовать userData без проверки на null и undefined
+	const { avatarUrl, id } = userData
 
 	const classes = useStyles()
 	const [open, setOpen] = React.useState(false)
@@ -116,7 +123,10 @@ const AvatarUploader = ({
 	}
 
 	const handleUploadClick = () => {
-		document.getElementById('upload-avatar').click()
+		const uploadAvatarInput = document.getElementById('upload-avatar')
+		if (uploadAvatarInput) {
+			uploadAvatarInput.click()
+		}
 	}
 
 	return (
