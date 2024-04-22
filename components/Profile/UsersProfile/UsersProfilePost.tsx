@@ -27,7 +27,6 @@ interface UsersProfilePostProps {
 	user: ResponseUser
 	createdAt: string
 	rating: number
-	onRepost: () => void
 }
 
 export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
@@ -42,8 +41,7 @@ export const UsersProfilePost: React.FC<UsersProfilePostProps> = ({
 	quote,
 	caption,
 	rating,
-	onRemove,
-	onRepost
+	onRemove
 }) => {
 	return (
 		<Paper elevation={0} classes={{ root: styles.paper }}>

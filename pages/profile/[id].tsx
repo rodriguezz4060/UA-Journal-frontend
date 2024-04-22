@@ -235,6 +235,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 										{userPosts.map(obj => (
 											<UsersProfilePost
 												key={obj.id}
+												onRemove={handleRemovePost}
 												id={obj.id}
 												rating={obj.rating}
 												title={obj.title}
@@ -282,7 +283,6 @@ const ProfilePage: NextPage<ProfilePage> = ({
 													.map(item => item.data.file.url)}
 												user={obj.user}
 												createdAt={obj.createdAt}
-												onRemove={handleRemovePost}
 											/>
 										))}
 									</div>

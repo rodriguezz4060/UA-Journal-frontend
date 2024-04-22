@@ -1,7 +1,7 @@
 import { Post } from '../components/Post'
 import { MainLayout } from '../layouts/MainLayout'
 import { Api } from '../utils/api'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { PostItem, RatingItem, ResponseUser } from '../utils/api/types'
 import { useState } from 'react'
 
@@ -26,7 +26,6 @@ const Home: NextPage<HomeProps> = ({ posts, user, postRating }) => {
 					key={obj.id}
 					id={obj.id}
 					rating={obj.rating}
-					postId={obj.id}
 					title={obj.title}
 					incut={obj.body
 						.filter(
@@ -69,13 +68,7 @@ const Home: NextPage<HomeProps> = ({ posts, user, postRating }) => {
 								item.type === 'image' &&
 								item.tunes?.anyTuneName?.ShowOnHomepage === true
 						)
-						.map(item => {
-							return {
-								url: item.data.file.url,
-								width: item.data.file.width,
-								height: item.data.file.height
-							}
-						})}
+						.map(item => item.data.file.url)}
 					user={obj.user}
 					createdAt={obj.createdAt}
 					onRemove={handleRemovePost}
@@ -85,7 +78,7 @@ const Home: NextPage<HomeProps> = ({ posts, user, postRating }) => {
 	)
 }
 
-export const getServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const posts = await Api().post.getAll()
 		return {
