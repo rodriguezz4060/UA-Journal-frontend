@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from 'react'
 import EditorJS, { OutputData } from '@editorjs/editorjs'
 import Quote from '@editorjs/quote'
 import List from '@editorjs/list'
-import IncutTool from './EditorTools/incut'
+import IncutTool from './../EditorTools/incut'
 import ImageTool from '@editorjs/image'
 import VideoTool from '@medistream/editorjs-video'
 import { IconStar } from '@codexteam/icons'
-import ShowOnHomepagePlugin from './EditorTools/tunes'
+import ShowOnHomepagePlugin from './../EditorTools/tunes'
 
 const Paragraph = require('@editorjs/paragraph')
 const CodeTool = require('@editorjs/code')
