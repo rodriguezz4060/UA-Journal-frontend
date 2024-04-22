@@ -7,7 +7,6 @@ import React from 'react'
 import Profile from './Profile'
 import SettingsMenu from './SettingsMenu'
 import General from './General'
-import SaveButton from './SaveButton'
 import { parseCookies } from 'nookies'
 import { useAppSelector } from '../../../redux/hooks'
 import { selectUserData, setUserData } from '../../../redux/slices/user'
@@ -19,13 +18,20 @@ interface SettingsMainProps {
 }
 
 const SettingsMain: React.FC<SettingsMainProps> = ({ id }) => {
+	const userData = useAppSelector(selectUserData)
+
+	// Проверка на null и undefined
+	if (!userData) {
+		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
+	}
+
 	const [activeTab, setActiveTab] = useState('profile')
 
-	const handleTabChange = tab => {
+	const handleTabChange = (tab: any) => {
 		setActiveTab(tab)
 	}
 	const [error, setError] = useState('')
-	const userData = useAppSelector(selectUserData)
+
 	const [fullName, setFullName] = useState(userData.fullName)
 	const [description, setDescription] = useState(userData.description)
 	const [feed, setFeed] = useState(userData.feed)

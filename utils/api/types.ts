@@ -10,6 +10,8 @@ export type CreateUserDto = {
 } & LoginDto
 
 export type ResponseUser = {
+	feed: string
+	password: unknown
 	id: number
 	avatarUrl: undefined | string
 	headerCoverUrl: null | string

@@ -38,6 +38,12 @@ interface SettingsMainProps {}
 
 const Profile: React.FC<SettingsMainProps> = ({}) => {
 	const userData = useAppSelector(selectUserData)
+
+	// Проверка на null и undefined
+	if (!userData) {
+		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
+	}
+
 	const [error, setError] = useState('')
 	const [focused, setFocused] = useState(false)
 	const classes = useStyles()
@@ -84,7 +90,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 		}
 	}
 
-	const handleUserNameChange = event => {
+	const handleUserNameChange = (event: any) => {
 		const value = event.target.value
 		if (value.length <= 30) {
 			setFullName(value)
@@ -98,7 +104,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 		}
 	}
 
-	const handleChange = e => {
+	const handleChange = (e: any) => {
 		const inputValue = e.target.value
 		setDescription(inputValue)
 	}
@@ -115,7 +121,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 		setOpen(false)
 	}
 
-	const handleListKeyDown = event => {
+	const handleListKeyDown = (event: any) => {
 		if (event.key === 'Tab') {
 			event.preventDefault()
 			setOpen(false)
@@ -184,7 +190,7 @@ const Profile: React.FC<SettingsMainProps> = ({}) => {
 							placeholder: 'Пара слов о себе',
 							inputProps: { maxLength: 160 },
 							endAdornment:
-								description?.length <= 150 ? null : (
+								description.length <= 150 ? null : (
 									<InputAdornment position='end'>
 										{description !== null ? 160 - description.length : null}
 									</InputAdornment>

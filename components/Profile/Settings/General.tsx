@@ -14,6 +14,11 @@ interface GeneralProps {}
 
 const General: React.FC<GeneralProps> = ({}) => {
 	const userData = useAppSelector(selectUserData)
+	// Проверка на null и undefined
+	if (!userData) {
+		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
+	}
+
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
 	const dispatch = useDispatch()
