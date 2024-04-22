@@ -3,7 +3,10 @@ import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import styles from './PhotoSwipe.module.scss'
 
-export default function SimpleGallery(props) {
+export default function SimpleGallery(props: {
+	galleryID: string | undefined
+	images: any[]
+}) {
 	useEffect(() => {
 		let lightbox = new PhotoSwipeLightbox({
 			gallery: '#' + props.galleryID,

@@ -17,11 +17,9 @@
 	},
 	"include": [
 		"next-env.d.ts",
-		"editorjs.d.ts",
+		"index.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"components/EditorTools/incut/index.js",
-		"components/EditorTools/incut/index.js",
 		"components/EditorTools/incut/index.js"
 	],
 	"exclude": ["node_modules"]
