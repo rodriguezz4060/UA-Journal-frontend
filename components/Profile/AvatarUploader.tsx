@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface AvatarUploaderProps {
-	headerCoverUrl: string | null
-	headerCoverPosition: string | null
+	headerCoverUrl?: string | null
+	headerCoverPosition?: string | null
 }
 
 const AvatarUploader = ({
@@ -42,9 +42,9 @@ const AvatarUploader = ({
 }: AvatarUploaderProps) => {
 	const userData = useAppSelector(selectUserData)
 	const [selectedFile, setSelectedFile] = useState<File | null>(null)
-	const [uploadedAvatarUrl, setUploadedAvatarUrl] = useState<string | null>(
-		userData.avatarUrl
-	)
+	// const [uploadedAvatarUrl, setUploadedAvatarUrl] = useState<string | null>(
+	// 	userData.avatarUrl
+	// )
 
 	const classes = useStyles()
 	const [open, setOpen] = React.useState(false)

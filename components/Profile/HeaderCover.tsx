@@ -7,8 +7,8 @@ import AddPhotoIcon from '@material-ui/icons/AddPhotoAlternateOutlined'
 import SaveIcon from '@material-ui/icons/SaveOutlined'
 
 interface HeaderCoverProps {
-	headerCoverUrl: string | null
-	headerCoverPosition: string | null
+	headerCoverUrl: string
+	headerCoverPosition: string
 }
 
 const HeaderCover = ({
