@@ -21,12 +21,13 @@ export const UserInfo: React.FC<UserInfoProps> = ({ followers }) => {
 	const userData = useAppSelector(selectUserData)
 	const followersCount = followers.length
 
-	const ratingClassName =
-		userData?.rating > 0
+	const ratingClassName = userData
+		? userData.rating > 0
 			? styles.numberChange__positive
-			: userData?.rating < 0
+			: userData.rating < 0
 			? styles.numberChange__negative
 			: ''
+		: ''
 
 	let followersText = ''
 
@@ -95,11 +96,14 @@ export const UserInfo: React.FC<UserInfoProps> = ({ followers }) => {
 				<div className={styles.header__stat}>
 					<div className={styles.headerStat}>
 						<div className={`${styles.numberChange} ${ratingClassName}`}>
-							{userData?.rating > 0
-								? `+${userData?.rating}`
-								: userData?.rating < 0
-								? `-${Math.abs(userData?.rating)}`
-								: userData?.rating}
+							{userData
+								? userData.rating > 0
+									? `+${userData.rating}`
+									: userData.rating < 0
+									? `-${Math.abs(userData.rating)}`
+									: userData.rating
+								: // Обработка случая, когда userData является null или undefined
+								  'Нет данных'}
 						</div>
 					</div>
 					<Link href='/profile/#' className={styles.headerStat}>
@@ -107,7 +111,9 @@ export const UserInfo: React.FC<UserInfoProps> = ({ followers }) => {
 					</Link>
 				</div>
 				<div className={styles.header__stat}>
-					На проекте с {moment(userData.createdAt).format('D MMM YYYY')}
+					{userData?.createdAt
+						? `На проекте с ${moment(userData.createdAt).format('D MMM YYYY')}`
+						: 'Нет данных о пользователе'}
 				</div>
 			</div>
 		</div>

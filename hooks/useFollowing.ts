@@ -7,7 +7,7 @@ type UseUserFollowingProps = {
 	userFollowing: FollowItem[]
 }
 
-export const useUserFollowing = (userId?: number): UseUserFollowingProps => {
+export const useUserFollowing = (userId: number): UseUserFollowingProps => {
 	const [userFollowing, setUserFollowing] = React.useState<FollowItem[]>([])
 
 	React.useEffect(() => {

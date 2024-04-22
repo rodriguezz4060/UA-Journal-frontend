@@ -1,5 +1,5 @@
 import { Paper, Typography, makeStyles } from '@material-ui/core'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { MainLayout } from '../../layouts/MainLayout'
 import { FollowItem, ResponseUser } from '../../utils/api/types'
 import TabsRating from '../../components/RatingPage/TabsRating'
@@ -46,7 +46,7 @@ const Rating: NextPage<RatingPageProps> = ({ users, followers, following }) => {
 	)
 }
 
-export const getServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const users = await Api().user.getAll()
 

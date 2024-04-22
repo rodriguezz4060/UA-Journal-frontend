@@ -35,6 +35,7 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 	index
 }) => {
 	const userData = useSelector(selectUserData)
+
 	const { userFollowing } = useUserFollowing(userData?.id)
 
 	const dispatch = useDispatch()
@@ -47,11 +48,11 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 	}, [buttonVisible, userData])
 
 	const [isFollowing, setIsFollowing] = useState(
-		userFollowing?.some(item => item.id === userId)
+		userFollowing.some(item => item.id === userId)
 	)
 
 	useEffect(() => {
-		setIsFollowing(userFollowing?.some(item => item.id === userId))
+		setIsFollowing(userFollowing.some(item => item.id === userId))
 	}, [userFollowing, userId])
 
 	const handleFollowUnfollow = async () => {
@@ -60,23 +61,22 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 			const success = await unfollowUser(userId)
 			if (success) {
 				const updatedFollowers = followers.filter(
-					item => item.id !== userData?.id
+					item => item.id !== userData.id
 				)
 				dispatch(updateFollowers(updatedFollowers))
 				setIsFollowing(false)
 			}
 		} else {
 			// Выполнить подписку пользователя
-			const isAlreadyFollowing = followers.some(
-				item => item.id === userData?.id
-			)
+			const isAlreadyFollowing = followers.some(item => item.id === userData.id)
 			if (!isAlreadyFollowing) {
 				const success = await followUser(userId)
 				if (success) {
-					const updatedFollowers = [
+					const updatedFollowers = {
 						...followers,
-						{ followUserId: userData?.id }
-					]
+						followUserId: userData?.id
+					}
+
 					dispatch(updateFollowers(updatedFollowers))
 					setIsFollowing(true)
 				}

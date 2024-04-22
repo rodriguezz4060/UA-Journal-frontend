@@ -7,8 +7,8 @@ import AddPhotoIcon from '@material-ui/icons/AddPhotoAlternateOutlined'
 import SaveIcon from '@material-ui/icons/SaveOutlined'
 
 interface HeaderCoverProps {
-	headerCoverUrl: string
-	headerCoverPosition: string
+	headerCoverUrl: string | null
+	headerCoverPosition: string | null
 }
 
 const HeaderCover = ({
@@ -93,7 +93,10 @@ const HeaderCover = ({
 	}
 
 	const handleUploadClick = () => {
-		document.getElementById('upload-header-cover').click()
+		const uploadCoverInput = document.getElementById('upload-header-cover')
+		if (uploadCoverInput) {
+			uploadCoverInput.click()
+		}
 	}
 
 	const [isEditing, setIsEditing] = useState(false)
@@ -108,7 +111,7 @@ const HeaderCover = ({
 		setInitialBackgroundPosition(backgroundPosition)
 	}
 
-	const handleImageMouseDown = e => {
+	const handleImageMouseDown = (e: any) => {
 		if (isEditing) {
 			setInitialMouseY(e.clientY)
 			setInitialBackgroundPosition(backgroundPosition)
@@ -116,7 +119,7 @@ const HeaderCover = ({
 		}
 	}
 
-	const handleImageMouseMove = e => {
+	const handleImageMouseMove = (e: any) => {
 		if (isDragging) {
 			const offsetY = initialMouseY - e.clientY // Инвертируем offsetY
 			const newPosition =

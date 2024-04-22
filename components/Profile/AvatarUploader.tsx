@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface AvatarUploaderProps {
-	headerCoverUrl: string
-	headerCoverPosition: string
+	headerCoverUrl: string | null
+	headerCoverPosition: string | null
 }
 
 const AvatarUploader = ({

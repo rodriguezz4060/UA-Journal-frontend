@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import {
 	Typography,
@@ -35,9 +35,9 @@ export const CommentProfile: React.FC<CommentProfileProps> = ({
 	onRemove,
 	post
 }) => {
-	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
-	const handleClick = event => {
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget)
 	}
 

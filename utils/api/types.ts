@@ -23,6 +23,7 @@ export type ResponseUser = {
 	token: string
 	createdAt: string
 	updatedAt: string
+	monthlyRating: number
 }
 
 export type PostItem = {
@@ -67,6 +68,9 @@ export type RatingItem = {
 }
 
 export type FollowItem = {
+	fullName: string
+	followUserId: number
+	avatarUrl: string | undefined
 	id: number
 	user: ResponseUser
 	following: number[]

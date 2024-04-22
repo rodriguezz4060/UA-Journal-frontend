@@ -105,8 +105,8 @@ const ProfilePage: NextPage<ProfilePage> = ({
 						>
 							<div className='justify-between'>
 								<AvatarUploader
-									headerCoverUrl={userData?.headerCoverUrl}
-									headerCoverPosition={userData?.headerCoverPosition}
+									headerCoverUrl={userData.headerCoverUrl}
+									headerCoverPosition={userData.headerCoverPosition}
 								/>
 							</div>
 							<UserInfo followers={followers} />
