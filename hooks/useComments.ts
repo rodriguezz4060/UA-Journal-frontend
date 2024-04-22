@@ -7,13 +7,13 @@ type UseCommentsProps = {
 	comments: CommentItem[]
 }
 
-export const useComments = (postId: number): UseCommentsProps => {
+export const useComments = (postId?: number): UseCommentsProps => {
 	const [comments, setComments] = React.useState<CommentItem[]>([])
 
 	React.useEffect(() => {
 		const fetchComments = async () => {
 			try {
-				const arr = await Api().comment.getAll(postId)
+				const arr = await Api().comment.getAll(Number(postId))
 				setComments(arr)
 			} catch (err) {
 				console.warn('Fetch comments', err)
