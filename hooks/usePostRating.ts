@@ -7,7 +7,7 @@ type UsePostRatingProps = {
 	postsRating: RatingItem[]
 }
 
-export const usePostRating = (postId?: number): UsePostRatingProps => {
+export const usePostRating = (postId: number): UsePostRatingProps => {
 	const [postsRating, setPostsRating] = React.useState<RatingItem[]>([])
 
 	React.useEffect(() => {
