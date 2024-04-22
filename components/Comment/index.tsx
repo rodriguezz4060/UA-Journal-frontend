@@ -21,7 +21,7 @@ interface CommentPostProps {
 	user: ResponseUser
 	text: string
 	createdAt: string
-	currentUserId: number
+	currentUserId?: number
 	onRemove: (id: number) => void
 	confirmRemove?: (message: string) => boolean
 }
