@@ -50,7 +50,6 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const id = ctx.params?.id
 
-		// Check if id is defined before making the API call
 		if (!id) {
 			return {
 				redirect: {
@@ -61,7 +60,9 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 		}
 
 		const post = await Api(ctx).post.getOne(+id)
+
 		const users = await Api().user.getAll()
+
 		const followers = await Promise.all(
 			users.map(user => Api().follow.getUserFollowing(user.id))
 		)
@@ -74,8 +75,9 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			}
 		}
 	} catch (err) {
-		console.log('Full post page', err)
+		console.log('Fulll post page', err)
 		return {
+			props: {},
 			redirect: {
 				destination: '/',
 				permanent: false
@@ -83,3 +85,5 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 		}
 	}
 }
+
+export default FullPostPage
