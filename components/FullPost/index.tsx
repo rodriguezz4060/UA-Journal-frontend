@@ -110,6 +110,12 @@ export const FullPost: NextPage<FullPostProps> = ({
 		setIsHovered(false)
 	}
 
+	const handleRepost = () => {
+		// Здесь должна быть логика для репоста поста
+		// Например, отправка запроса на сервер
+		console.log(`Репост поста с id ${id}`)
+	}
+
 	return (
 		<div>
 			<Paper

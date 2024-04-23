@@ -8,6 +8,5 @@ export type FullPostProps = {
 	rating: number
 	createdAt: string
 	onRemove: () => void
-	onRepost: () => void
 	followers: any[] // Замените 'any' на правильный тип, если он известен
 }
