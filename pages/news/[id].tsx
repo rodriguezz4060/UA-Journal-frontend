@@ -26,6 +26,12 @@ const FullPostPage: NextPage<FullPostPageProps> = ({ post, followers }) => {
 		}
 	}
 
+	const handleRepost = () => {
+		// Здесь должна быть логика для репоста поста
+		// Например, отправка запроса на сервер
+		console.log(`Репост поста с id ${post.id}`)
+	}
+
 	return (
 		<MainLayout className='mb-50' contentFullWidth>
 			<FullPost
@@ -35,7 +41,8 @@ const FullPostPage: NextPage<FullPostPageProps> = ({ post, followers }) => {
 				user={post.user}
 				rating={post.rating}
 				createdAt={post.createdAt}
-				onRemove={handleRemovePost}
+				onRemove={() => handleRemovePost(post.id)}
+				onRepost={handleRepost}
 				followers={followers}
 				userId={post.user.id}
 			/>
@@ -49,10 +56,19 @@ const FullPostPage: NextPage<FullPostPageProps> = ({ post, followers }) => {
 export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const id = ctx.params?.id
+
+		// Check if id is defined before making the API call
+		if (!id) {
+			return {
+				redirect: {
+					destination: '/',
+					permanent: false
+				}
+			}
+		}
+
 		const post = await Api(ctx).post.getOne(+id)
-
 		const users = await Api().user.getAll()
-
 		const followers = await Promise.all(
 			users.map(user => Api().follow.getUserFollowing(user.id))
 		)
@@ -65,9 +81,8 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 			}
 		}
 	} catch (err) {
-		console.log('Fulll post page', err)
+		console.log('Full post page', err)
 		return {
-			props: {},
 			redirect: {
 				destination: '/',
 				permanent: false
@@ -75,5 +90,3 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 		}
 	}
 }
-
-export default FullPostPage
