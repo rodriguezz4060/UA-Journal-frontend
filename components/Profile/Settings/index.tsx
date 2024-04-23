@@ -14,7 +14,9 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 
 interface SettingsMainProps {
-	id: string
+	id: number
+	fullName: string
+	description: string | null
 }
 
 const SettingsMain: React.FC<SettingsMainProps> = ({ id }) => {

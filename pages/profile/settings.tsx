@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import SettingsMain from '../../components/Profile/Settings'
 import { ResponseUser } from '../../utils/api/types'
 import { Api } from '../../utils/api'
@@ -17,7 +17,7 @@ const Settings: NextPage<SettingsProps> = ({ user }) => {
 	)
 }
 
-export const getServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const api = Api(ctx)
 		const userData = await api.user.getMe()
