@@ -26,12 +26,6 @@ const FullPostPage: NextPage<FullPostPageProps> = ({ post, followers }) => {
 		}
 	}
 
-	const handleRepost = () => {
-		// Здесь должна быть логика для репоста поста
-		// Например, отправка запроса на сервер
-		console.log(`Репост поста с id ${post.id}`)
-	}
-
 	return (
 		<MainLayout className='mb-50' contentFullWidth>
 			<FullPost
@@ -42,7 +36,6 @@ const FullPostPage: NextPage<FullPostPageProps> = ({ post, followers }) => {
 				rating={post.rating}
 				createdAt={post.createdAt}
 				onRemove={() => handleRemovePost(post.id)}
-				onRepost={handleRepost}
 				followers={followers}
 				userId={post.user.id}
 			/>
