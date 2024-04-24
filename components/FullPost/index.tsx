@@ -195,7 +195,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 								}
 								if (obj.type === 'code') {
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={styles.block_code}>{obj.data.code}</div>
 										</div>
 									)
@@ -211,6 +211,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 												<div className={styles.images}>
 													<SimpleGallery
 														galleryID='postsGallery'
+														key={obj.id}
 														images={[
 															{
 																largeURL: obj.data.file.url,
@@ -236,7 +237,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 											? styles.image
 											: styles.stretched_image
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={videoClass}>
 												<video controls>
 													<source src={obj.data.file.url} type='video/mp4' />
@@ -286,9 +287,9 @@ export const FullPost: NextPage<FullPostProps> = ({
 													${styles.subsiteCardTitle__item} ${ratingClassName}`}
 												>
 													{user.rating > 0
-														? `+${user?.rating}`
+														? `+${user.rating}`
 														: user.rating < 0
-														? `-${Math.abs(user?.rating)}`
+														? `-${Math.abs(user.rating)}`
 														: user.rating}
 												</div>
 											</div>
