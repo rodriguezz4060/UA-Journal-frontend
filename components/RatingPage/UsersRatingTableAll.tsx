@@ -36,12 +36,7 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 }) => {
 	const userData = useSelector(selectUserData)
 
-	// Проверка на null и undefined
-	if (!userData) {
-		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
-	}
-
-	const { userFollowing } = useUserFollowing(userData.id)
+	const { userFollowing } = useUserFollowing(userData?.id)
 
 	const dispatch = useDispatch()
 
@@ -66,14 +61,16 @@ const UsersRatingTableAll: NextPage<UsersRatingTableAllPageProps> = ({
 			const success = await unfollowUser(userId)
 			if (success) {
 				const updatedFollowers = followers.filter(
-					item => item.id !== userData.id
+					item => item.id !== userData?.id
 				)
 				dispatch(updateFollowers(updatedFollowers))
 				setIsFollowing(false)
 			}
 		} else {
 			// Выполнить подписку пользователя
-			const isAlreadyFollowing = followers.some(item => item.id === userData.id)
+			const isAlreadyFollowing = followers.some(
+				item => item.id === userData?.id
+			)
 			if (!isAlreadyFollowing) {
 				const success = await followUser(userId)
 				if (success) {
