@@ -98,8 +98,9 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 
 	const handleLogout = () => {
 		// Очистите токен аутентификации на стороне клиента
-		destroyCookie(null, 'rtoken')
-		destroyCookie(null, 'authToken')
+		document.cookie = 'rtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+		document.cookie =
+			'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 
 		// Перенаправьте пользователя на страницу входа
 		router.reload()
