@@ -133,10 +133,9 @@ export const FullPost: NextPage<FullPostProps> = ({
 							{blocks.map(obj => {
 								if (obj.type === 'paragraph') {
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={styles.paragraph}>
 												<Typography
-													key={obj.id}
 													dangerouslySetInnerHTML={{ __html: obj.data.text }}
 												/>
 											</div>
@@ -145,12 +144,11 @@ export const FullPost: NextPage<FullPostProps> = ({
 								}
 								if (obj.type === 'quote') {
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<blockquote className={styles.block_quote}>
 												<div className={styles.quote__content}>
 													<QuoteIcon />
 													<Typography
-														key={obj.id}
 														className={styles.quote_text}
 														dangerouslySetInnerHTML={{ __html: obj.data.text }}
 													/>
@@ -167,7 +165,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 								}
 								if (obj.type === 'list') {
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={styles.list}>
 												<ul>
 													{obj.data.items.map((item: any, index: number) => (
@@ -180,11 +178,10 @@ export const FullPost: NextPage<FullPostProps> = ({
 								}
 								if (obj.type === 'incut') {
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={styles.block_incut}>
 												<div className={styles.content_incut}>
 													<Typography
-														key={obj.id}
 														className={styles.quote_text}
 														dangerouslySetInnerHTML={{ __html: obj.data.text }}
 													/>
@@ -206,12 +203,11 @@ export const FullPost: NextPage<FullPostProps> = ({
 											? styles.islandA
 											: styles.islandB
 									return (
-										<div className={styles.figure}>
+										<div className={styles.figure} key={obj.id}>
 											<div className={imageStyle}>
 												<div className={styles.images}>
 													<SimpleGallery
 														galleryID='postsGallery'
-														key={obj.id}
 														images={[
 															{
 																largeURL: obj.data.file.url,
