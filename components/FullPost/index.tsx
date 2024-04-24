@@ -16,14 +16,13 @@ import { useDispatch } from 'react-redux'
 import { followUser, unfollowUser } from '../../utils/api/follow'
 import { updateFollowers } from '../../redux/slices/usersFollowersSlice'
 import Link from 'next/link'
-import { FollowItem } from '../../utils/api/types'
+import { FollowItem, ResponseUser } from '../../utils/api/types'
 import { NextPage } from 'next'
 import { useUserFollowing } from '../../hooks/useFollowing'
 import { FullPostProps } from './FullPostProps'
 
 interface FullPost {
 	followers: FollowItem[]
-	onRemove: () => void
 }
 
 export const FullPost: NextPage<FullPostProps> = ({
@@ -89,9 +88,9 @@ export const FullPost: NextPage<FullPostProps> = ({
 	}
 
 	const ratingClassName =
-		user?.rating > 0
+		user.rating > 0
 			? styles.numberChange__positive
-			: user?.rating < 0
+			: user.rating < 0
 			? styles.numberChange__negative
 			: ''
 
@@ -286,15 +285,15 @@ export const FullPost: NextPage<FullPostProps> = ({
 													className={`${styles.subsiteCardTitle__item__karma} 
 													${styles.subsiteCardTitle__item} ${ratingClassName}`}
 												>
-													{user?.rating > 0
+													{user.rating > 0
 														? `+${user?.rating}`
-														: user?.rating < 0
+														: user.rating < 0
 														? `-${Math.abs(user?.rating)}`
-														: user?.rating}
+														: user.rating}
 												</div>
 											</div>
 
-											{user?.description && (
+											{user.description && (
 												<div
 													className={styles.subsiteCard__description}
 													dangerouslySetInnerHTML={{

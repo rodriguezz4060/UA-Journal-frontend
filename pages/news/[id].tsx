@@ -50,12 +50,9 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 	try {
 		const id = ctx.params?.id
 
-		if (!id) {
+		if (!id || isNaN(Number(id))) {
 			return {
-				redirect: {
-					destination: '/',
-					permanent: false
-				}
+				notFound: true
 			}
 		}
 

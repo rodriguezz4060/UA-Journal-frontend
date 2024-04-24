@@ -29,11 +29,11 @@ export type ResponseUser = {
 }
 
 export type PostItem = {
+	id: number
 	title: string
 	body: OutputData['blocks']
 	description: string
 	tags: null | string
-	id: number
 	views: number
 	tunes: string[]
 	items: string

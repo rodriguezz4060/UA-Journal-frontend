@@ -3,7 +3,7 @@ import { MainLayout } from '../layouts/MainLayout'
 import { Api } from '../utils/api'
 import { GetServerSideProps, NextPage } from 'next'
 import { PostItem, RatingItem, ResponseUser } from '../utils/api/types'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 interface HomeProps {
 	posts: PostItem[]
@@ -19,9 +19,12 @@ const Home: NextPage<HomeProps> = ({ posts, user, postRating }) => {
 		setPostList(updatedList)
 	}
 
+	// Обернуть postList в useMemo для оптимизации
+	const memoizedPostList = useMemo(() => postList, [postList])
+
 	return (
 		<MainLayout>
-			{postList.map(obj => (
+			{memoizedPostList.map(obj => (
 				<Post
 					key={obj.id}
 					id={obj.id}

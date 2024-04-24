@@ -1,10 +1,13 @@
+import { OutputData } from '@editorjs/editorjs'
+import { ResponseUser } from '../../utils/api/types'
+
 export type FullPostProps = {
 	// Определите свойства здесь
-	title: string
-	blocks: any[] // Замените 'any' на правильный тип, если он известен
-	user: any // Замените 'any' на правильный тип, если он известен
-	userId: number
 	id: number
+	user: ResponseUser
+	userId: number
+	title: string
+	blocks: OutputData['blocks']
 	rating: number
 	createdAt: string
 	onRemove: () => void
