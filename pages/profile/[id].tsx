@@ -193,6 +193,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 										{sortedComments.map(comment => (
 											<Paper className={classes.paper} elevation={0}>
 												<CommentProfile
+													key={comment.id}
 													id={comment.id}
 													onRemove={handleRemoveComment}
 													user={user}
@@ -299,6 +300,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 											{filteredComments.map(comment => (
 												<Paper className={classes.paper} elevation={0}>
 													<CommentProfile
+														key={comment.id}
 														id={comment.id}
 														user={user}
 														text={comment.text}
