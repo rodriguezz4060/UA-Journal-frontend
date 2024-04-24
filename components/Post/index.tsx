@@ -34,7 +34,7 @@ interface PostProps {
 	incut: string[]
 	quote: string[]
 	caption: string[]
-	images: string[]
+	images: any
 	video: string[]
 	onRemove: (id: number) => void
 	user: ResponseUser
@@ -87,11 +87,12 @@ export const Post: React.FC<PostProps> = ({
 					<div
 						className={`${stylesMedia.imagePost} ${stylesMedia.contentImage}`}
 					>
-						{images.map((image: any, index) => {
+						{images.map((image: any, index: number) => {
 							const obj = {
 								type: 'image',
 								data: {
-									caption: caption,
+									caption: image.caption,
+
 									file: {
 										url: image.url,
 										width: image.width,

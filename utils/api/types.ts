@@ -41,7 +41,7 @@ export type PostItem = {
 	quote: string[]
 	caption: string
 	code: string
-	images?: string[]
+	images: string[]
 	user: ResponseUser
 	postRating: RatingItem
 	rating: number
