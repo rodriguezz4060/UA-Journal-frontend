@@ -7,16 +7,19 @@ type UseUserFollowingProps = {
 	userFollowing: FollowItem[]
 }
 
-export const useUserFollowing = (userId: number): UseUserFollowingProps => {
+export const useUserFollowing = (userId?: number): UseUserFollowingProps => {
 	const [userFollowing, setUserFollowing] = React.useState<FollowItem[]>([])
 
 	React.useEffect(() => {
 		const fetchFollowing = async () => {
-			try {
-				const Following = await Api().follow.getUserFollowing(userId)
-				setUserFollowing(Following)
-			} catch (err) {
-				console.warn('Fetch followers', err)
+			if (userId !== undefined) {
+				// Проверяем, что userId определен
+				try {
+					const Following = await Api().follow.getUserFollowing(userId)
+					setUserFollowing(Following)
+				} catch (err) {
+					console.warn('Fetch followers', err)
+				}
 			}
 		}
 

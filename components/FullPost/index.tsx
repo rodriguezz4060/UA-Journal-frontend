@@ -39,12 +39,7 @@ export const FullPost: NextPage<FullPostProps> = ({
 }) => {
 	const userData = useAppSelector(selectUserData)
 
-	// Проверка на null и undefined
-	if (!userData) {
-		return <div>Загрузка...</div> // Или любой другой компонент, который будет отображаться, пока данные не будут загружены
-	}
-
-	const { userFollowing } = useUserFollowing(userData.id)
+	const { userFollowing } = useUserFollowing(userData?.id)
 
 	const dispatch = useDispatch()
 
