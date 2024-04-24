@@ -27,8 +27,11 @@ export const UsersFollowInfo: React.FC<UsersFollowInfoProps> = ({
 				<div className={`${styles.list} ${styles.list__images}`}>
 					<div className={styles.list__content}>
 						{followers.slice(-12).map(item => (
-							<Link href={`/profile/${item.id}`} className={styles.list__item}>
-								<div key={item.id}>
+							<div key={item.id}>
+								<Link
+									href={`/profile/${item.id}`}
+									className={styles.list__item}
+								>
 									{item.avatarUrl !== '' ? (
 										<Avatar
 											src={item.avatarUrl}
@@ -39,8 +42,8 @@ export const UsersFollowInfo: React.FC<UsersFollowInfoProps> = ({
 											{item.fullName[0]}
 										</Avatar>
 									)}
-								</div>
-							</Link>
+								</Link>
+							</div>
 						))}
 					</div>
 					<Link

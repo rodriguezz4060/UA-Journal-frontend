@@ -7,15 +7,11 @@ import Link from 'next/link'
 interface FollowInfoProps {
 	following: FollowItem[]
 	followers: FollowItem[]
-	userId: number
-	user: ResponseUser
 }
 
 export const FollowInfo: React.FC<FollowInfoProps> = ({
 	following,
-	followers,
-	userId,
-	user
+	followers
 }) => {
 	return (
 		<>
@@ -29,8 +25,11 @@ export const FollowInfo: React.FC<FollowInfoProps> = ({
 				<div className={`${styles.list} ${styles.list__images}`}>
 					<div className={styles.list__content}>
 						{followers.slice(-12).map(item => (
-							<Link href={`/profile/${item.id}`} className={styles.list__item}>
-								<div key={item.id}>
+							<div key={item.id}>
+								<Link
+									href={`/profile/${item.id}`}
+									className={styles.list__item}
+								>
 									{item.avatarUrl !== '' ? (
 										<Avatar
 											src={item.avatarUrl}
@@ -41,8 +40,8 @@ export const FollowInfo: React.FC<FollowInfoProps> = ({
 											{item.fullName[0]}
 										</Avatar>
 									)}
-								</div>
-							</Link>
+								</Link>
+							</div>
 						))}
 					</div>
 					<Link

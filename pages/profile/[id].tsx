@@ -207,12 +207,7 @@ const ProfilePage: NextPage<ProfilePage> = ({
 								)}
 							</div>
 							<div className=' ProfilePage__sideBar'>
-								<FollowInfo
-									following={following}
-									followers={followers}
-									user={userData}
-									userId={user.id}
-								/>
+								<FollowInfo following={following} followers={followers} />
 							</div>
 						</div>
 					</div>

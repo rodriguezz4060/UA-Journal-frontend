@@ -22,7 +22,7 @@ interface UsersProfilePostProps {
 	incut: string[]
 	quote: string[]
 	caption: string[]
-	images: string[]
+	images: any
 	video: string[]
 	onRemove: (id: number) => void
 	user: ResponseUser
