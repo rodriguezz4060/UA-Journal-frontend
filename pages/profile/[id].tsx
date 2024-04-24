@@ -176,7 +176,12 @@ const ProfilePage: NextPage<ProfilePage> = ({
 															item.type === 'image' &&
 															item.tunes?.anyTuneName?.ShowOnHomepage === true
 													)
-													.map(item => item.data.file.url)}
+													.map(item => ({
+														url: item.data.file.url,
+														width: item.data.file.width,
+														height: item.data.file.height,
+														caption: item.data.caption
+													}))}
 												user={obj.user}
 												createdAt={obj.createdAt}
 											/>
@@ -280,7 +285,12 @@ const ProfilePage: NextPage<ProfilePage> = ({
 															item.type === 'image' &&
 															item.tunes?.anyTuneName?.ShowOnHomepage === true
 													)
-													.map(item => item.data.file.url)}
+													.map(item => ({
+														url: item.data.file.url,
+														width: item.data.file.width,
+														height: item.data.file.height,
+														caption: item.data.caption
+													}))}
 												user={obj.user}
 												createdAt={obj.createdAt}
 											/>
