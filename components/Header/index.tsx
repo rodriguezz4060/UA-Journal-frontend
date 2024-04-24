@@ -97,8 +97,12 @@ export const Header: React.FC<HeaderProps> = ({}) => {
 	const router = useRouter()
 
 	const handleLogout = () => {
-		destroyCookie(null, 'rtoken', 'authToken')
-		router.push('/')
+		// Очистите токен аутентификации на стороне клиента
+		destroyCookie(null, 'rtoken')
+		destroyCookie(null, 'authToken')
+
+		// Перенаправьте пользователя на страницу входа
+		router.reload()
 	}
 
 	return (
